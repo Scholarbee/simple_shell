@@ -1,0 +1,76 @@
+#include "sshell.h"
+
+/**
+ * cInfo - a function that initializes info_t struct
+ * @info: struct address
+ */
+void cInfo(arg_info *info)
+{
+	info->arg = NULL;
+	info->argv = NULL;
+	info->path = NULL;
+	info->argc = 0;
+}
+
+/**
+ * sInfo - a function that initializes info_t struct
+ * @info: struct address
+ * @av: argument vector
+ */
+void sInfo(arg_info *info, char **av)
+{
+	int i = 0;
+
+	info->fname = av[0];
+	if (info->arg)
+	{
+		info->argv = par_strtow(info->arg, " \t");
+		if (!info->argv)
+		{
+
+			info->argv = malloc(sizeof(char *) * 2);
+			if (info->argv)
+			{
+				info->argv[0] = ut_strdup(info->arg);
+				info->argv[1] = NULL;
+			}
+		}
+		for (i = 0; info->argv && info->argv[i]; i++)
+			;
+		info->argc = i;
+
+		var_replace_alias(info);
+		var_replace_vars(info);
+	}
+}
+
+/**
+ * fInfo - a function that frees info_t struct fields
+ * @info: struct address
+ * @all: true if free-ing all fields
+ *
+ * Return: Nothing
+ */
+void fInfo(arg_info *info, int all)
+{
+	aa_ffree(info->argv);
+	info->argv = NULL;
+	info->path = NULL;
+	if (all)
+	{
+		if (!info->commandBuffer)
+			free(info->arg);
+		if (info->env)
+			arr_free_list(&(info->env));
+		if (info->history)
+			arr_free_list(&(info->history));
+		if (info->alias)
+			arr_free_list(&(info->alias));
+		aa_ffree(info->environ);
+			info->environ = NULL;
+		mem_bfree((void **)info->commandBuffer);
+		if (info->readfd > 2)
+			close(info->readfd);
+		ut_putchar(BUF_FLUSH);
+	}
+}
