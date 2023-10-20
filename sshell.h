@@ -38,12 +38,7 @@
 extern char **environ;
 
 
-/**
- * 
- * @n: the number field
- * @str: a string field
- * @next: pointer to the next node
- */
+
 typedef struct liststr
 {
 	int n;
@@ -80,11 +75,7 @@ typedef struct argument_passed
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
-/**
- *struct builtin - contains a builtin string and related function
- *@type: the builtin command flag
- *@func: the function
- */
+
 typedef struct builtin
 {
 	char *type;
