@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-int parse_is_cmd(arg_info *info, char *path)
+int parse_is_cmd(my_arg_info *info, char *path)
 {
 	struct stat st;
 
@@ -30,7 +30,7 @@ char *parse_dup_chars(char *pathstr, int start, int stop)
 }
 
 
-char *parse_find_path(arg_info *info, char *path_string, char *command)
+char *parse_find_path(my_arg_info *info, char *path_string, char *command)
 {
 	int i = 0, current_position = 0;
 	char *path;

@@ -40,8 +40,8 @@ int ss_hsh(my_arg_info *info, char **av)
 
 int ss_find_builtin(my_arg_info *info)
 {
-	int i, built_in_ret = -1;
-	builtin_table builtintbl[] = {
+	int i, blt_in_ret = -1;
+	blt_in_table bltintbl[] = {
 		{"help", pi_myhelp},
 		{"env", env_my_env},
 		{"history", pi_myhistory},
@@ -53,14 +53,14 @@ int ss_find_builtin(my_arg_info *info)
 		{NULL, NULL}
 	};
 
-	for (i = 0; builtintbl[i].type; i++)
-		if (ut_strcmp(info->argv[0], builtintbl[i].type) == 0)
+	for (i = 0; bltintbl[i].type; i++)
+		if (ut_strcmp(info->argv[0], bltintbl[i].type) == 0)
 		{
 			info->count_line++;
-			built_in_ret = builtintbl[i].func(info);
+			blt_in_ret = builtintbl[i].func(info);
 			break;
 		}
-	return (built_in_ret);
+	return (blt_in_ret);
 }
 
 

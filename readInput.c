@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-ssize_t input_buffer(arg_info *info, char **buf, size_t *length)
+ssize_t input_buffer(my_arg_info *info, char **buf, size_t *length)
 {
 	ssize_t r = 0;
 	size_t len_p = 0;
@@ -40,7 +40,7 @@ ssize_t input_buffer(arg_info *info, char **buf, size_t *length)
 }
 
 
-ssize_t gInput(arg_info *info)
+ssize_t gInput(my_arg_info *info)
 {
 	static char *buf; 
 	static size_t i, j, len;
@@ -80,7 +80,7 @@ ssize_t gInput(arg_info *info)
 }
 
 
-ssize_t read_buffer(arg_info *info, char *buf, size_t *size)
+ssize_t read_buffer(my_arg_info *info, char *buf, size_t *size)
 {
 	ssize_t r = 0;
 
@@ -93,7 +93,7 @@ ssize_t read_buffer(arg_info *info, char *buf, size_t *size)
 }
 
 
-int _gLine(arg_info *info, char **ptr, size_t *length)
+int _gLine(my_arg_info *info, char **ptr, size_t *length)
 {
 	static char buf[READ_BUF_SIZE];
 	static size_t i, len;

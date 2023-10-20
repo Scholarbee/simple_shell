@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-int var_is_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p)
+int var_is_chain(my_arg_info *ptr_info, char *bfer, size_t *ptr_p)
 {
 	size_t e = *ptr_p;
 
@@ -29,7 +29,7 @@ int var_is_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p)
 }
 
 
-void var_check_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p, size_t j, size_t l)
+void var_check_chain(my_arg_info *ptr_info, char *bfer, size_t *ptr_p, size_t j, size_t l)
 {
 	size_t i = *ptr_p;
 
@@ -54,7 +54,7 @@ void var_check_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p, size_t j, si
 }
 
 
-int var_replace_alias(arg_info *ptr_info)
+int var_replace_alias(my_arg_info *ptr_info)
 {
 	int i;
 	list_tbl *node;
@@ -78,7 +78,7 @@ int var_replace_alias(arg_info *ptr_info)
 }
 
 
-int var_replace_vars(arg_info *ptr_info)
+int var_replace_vars(my_arg_info *ptr_info)
 {
 	int i = 0;
 	list_tbl *node;

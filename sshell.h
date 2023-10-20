@@ -76,11 +76,11 @@ typedef struct my_argument_passed
 	0, 0, 0}
 
 
-typedef struct built_in
+typedef struct blt_in
 {
 	char *type;
 	int (*func)(my_arg_info *);
-} built_in_tbl;
+} blt_in_tbl;
 
 
 /* prtotype main_shell */

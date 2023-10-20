@@ -2,7 +2,7 @@
 
 
 
-char *get_past_file(arg_info *info)
+char *get_past_file(my_arg_info *info)
 {
 	char *buf, *directory;
 
@@ -20,7 +20,7 @@ char *get_past_file(arg_info *info)
 }
 
 
-int write_past(arg_info *info)
+int write_past(my_arg_info *info)
 {
 	ssize_t fd;
 	char *filename = get_past_file(info);
@@ -44,7 +44,7 @@ int write_past(arg_info *info)
 }
 
 
-int read_past(arg_info *info)
+int read_past(my_arg_info *info)
 {
 	int i, last = 0, linecount = 0;
 	ssize_t fd, readlen, fsize = 0;
@@ -88,7 +88,7 @@ int read_past(arg_info *info)
 }
 
 
-int build_past_list(arg_info *info, char *buf, int linecount)
+int build_past_list(my_arg_info *info, char *buf, int linecount)
 {
 	list_tbl *node = NULL;
 
@@ -102,7 +102,7 @@ int build_past_list(arg_info *info, char *buf, int linecount)
 }
 
 
-int renumber_past(arg_info *info)
+int renumber_past(my_arg_info *info)
 {
 	list_tbl *node = info->history;
 	int i = 0;

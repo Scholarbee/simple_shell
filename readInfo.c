@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-void cInfo(arg_info *info)
+void cInfo(my_arg_info *info)
 {
 	info->arg = NULL;
 	info->argv = NULL;
@@ -10,7 +10,7 @@ void cInfo(arg_info *info)
 }
 
 
-void sInfo(arg_info *info, char **av)
+void sInfo(my_arg_info *info, char **av)
 {
 	int i = 0;
 
@@ -38,7 +38,7 @@ void sInfo(arg_info *info, char **av)
 }
 
 
-void fInfo(arg_info *info, int all)
+void fInfo(my_arg_info *info, int all)
 {
 	aa_ffree(info->argv);
 	info->argv = NULL;

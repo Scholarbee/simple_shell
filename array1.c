@@ -51,9 +51,9 @@ list_tbl *arr_add_node_end(list_tbl **head_ptr, const char *str, int nb)
 	}
 	if (node)
 	{
-		while (node->next)
+		while (node->nxt)
 			node = node->nxt;
-		node->next = new_node;
+		node->nxt = new_node;
 	}
 	else
 		*head_ptr = new_node;

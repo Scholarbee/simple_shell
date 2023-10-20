@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-char **_get_env(arg_info *info)
+char **_get_env(my_arg_info *info)
 {
 	if (!info->environ || info->env_changed)
 	{
@@ -13,7 +13,7 @@ char **_get_env(arg_info *info)
 }
 
 
-int _unset_env(arg_info *info, char *var)
+int _unset_env(my_arg_info *info, char *var)
 {
 	list_tbl *node = info->env;
 	size_t i = 0;
@@ -39,7 +39,7 @@ int _unset_env(arg_info *info, char *var)
 }
 
 
-int _set_env(arg_info *info, char *var, char *val)
+int _set_env(my_arg_info *info, char *var, char *val)
 {
 	char *buffer = NULL;
 	list_tbl *node;

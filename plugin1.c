@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-int pi_myexit(arg_info *info)
+int pi_myexit(my_arg_info *info)
 {
 	int exit_check;
 
@@ -24,7 +24,7 @@ int pi_myexit(arg_info *info)
 }
 
 
-int pi_mycd(arg_info *info)
+int pi_mycd(my_arg_info *info)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_return;
@@ -69,7 +69,7 @@ int pi_mycd(arg_info *info)
 }
 
 
-int pi_myhelp(arg_info *info)
+int pi_myhelp(my_arg_info *info)
 {
 	char **arg_array;
 

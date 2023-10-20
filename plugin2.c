@@ -1,14 +1,14 @@
 #include "sshell.h"
 
 
-int pi_myhistory(arg_info *info)
+int pi_myhistory(my_arg_info *info)
 {
 	print_arr(info->history);
 	return (0);
 }
 
 
-int pi_unset_alias(arg_info *info, char *str)
+int pi_unset_alias(my_arg_info *info, char *str)
 {
 	char *p, c;
 	int ret;
@@ -25,7 +25,7 @@ int pi_unset_alias(arg_info *info, char *str)
 }
 
 
-int pi_set_alias(arg_info *info, char *str)
+int pi_set_alias(my_arg_info *info, char *str)
 {
 	char *ptr;
 
@@ -58,7 +58,7 @@ int pi_print_alias(list_tbl *node)
 }
 
 
-int pi_myalias(arg_info *info)
+int pi_myalias(my_arg_info *info)
 {
 	int i = 0;
 	char *ptr = NULL;
