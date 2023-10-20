@@ -38,13 +38,13 @@
 extern char **environ;
 
 
-
-typedef struct liststr
+//edited
+typedef struct list_str
 {
-	int n;
-	char *str;
-	struct liststr *next;
-} list_t;
+	int num;
+	char *p_str;
+	struct list_str *next;
+} list_tbl;
 
 
 typedef struct argument_passed
