@@ -38,7 +38,7 @@
 extern char **environ;
 
 
-//edited
+
 typedef struct list_str
 {
 	int num;
@@ -58,9 +58,9 @@ typedef struct argument_passed
 	
 	int lc_flag;
 	char *fname;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
+	list_tbl *env;
+	list_tbl *history;
+	list_tbl *alias;
 	char **environ;
 	int env_changed;
 	int status;
@@ -183,18 +183,18 @@ int build_past_list(arg_info *info, char *buf, int linecount);
 int renumber_past(arg_info *info);
 
 /* prototype for array1.c */
-list_t *arr_add_node(list_t **, const char *, int);
-list_t *arr_add_node_end(list_t **, const char *, int);
-size_t arr_print_list_str(const list_t *);
-int arr_delete_node_at_index(list_t **, unsigned int);
-void arr_free_list(list_t **);
+list_tbl *arr_add_node(list_tbl **, const char *, int);
+list_tbl *arr_add_node_end(list_tbl **, const char *, int);
+size_t arr_print_list_str(const list_tbl *);
+int arr_delete_node_at_index(list_tbl **, unsigned int);
+void arr_free_list(list_tbl **);
 
 /* prototype for array2.c */
-size_t arr_len(const list_t *);
-char **arr_to_strings(list_t *);
-size_t print_arr(const list_t *);
-list_t *arr_node_starts_with(list_t *, char *, char);
-ssize_t arr_get_node_index(list_t *, list_t *);
+size_t arr_len(const list_tbl *);
+char **arr_to_strings(list_tbl *);
+size_t print_arr(const list_tbl *);
+list_tbl *arr_node_starts_with(list_tbl *, char *, char);
+ssize_t arr_get_node_index(list_tbl *, list_tbl *);
 
 /* prototype for var.c */
 int var_is_chain(arg_info *, char *, size_t *);

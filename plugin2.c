@@ -40,7 +40,7 @@ int pi_set_alias(arg_info *info, char *str)
 }
 
 
-int pi_print_alias(list_t *node)
+int pi_print_alias(list_tbl *node)
 {
 	char *ptr = NULL, *a = NULL;
 
@@ -62,7 +62,7 @@ int pi_myalias(arg_info *info)
 {
 	int i = 0;
 	char *ptr = NULL;
-	list_t *node = NULL;
+	list_tbl *node = NULL;
 
 	if (info->argc == 1)
 	{

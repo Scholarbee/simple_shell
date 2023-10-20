@@ -15,7 +15,7 @@ char **_get_env(arg_info *info)
 
 int _unset_env(arg_info *info, char *var)
 {
-	list_t *node = info->env;
+	list_tbl *node = info->env;
 	size_t i = 0;
 	char *p;
 
@@ -42,7 +42,7 @@ int _unset_env(arg_info *info, char *var)
 int _set_env(arg_info *info, char *var, char *val)
 {
 	char *buffer = NULL;
-	list_t *node;
+	list_tbl *node;
 	char *ptr;
 
 	if (!var || !val)

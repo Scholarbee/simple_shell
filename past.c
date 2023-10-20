@@ -24,7 +24,7 @@ int write_past(arg_info *info)
 {
 	ssize_t fd;
 	char *filename = get_past_file(info);
-	list_t *node = NULL;
+	list_tbl *node = NULL;
 
 	if (!filename)
 		return (-1);
@@ -90,7 +90,7 @@ int read_past(arg_info *info)
 
 int build_past_list(arg_info *info, char *buf, int linecount)
 {
-	list_t *node = NULL;
+	list_tbl *node = NULL;
 
 	if (info->history)
 		node = info->history;
@@ -104,7 +104,7 @@ int build_past_list(arg_info *info, char *buf, int linecount)
 
 int renumber_past(arg_info *info)
 {
-	list_t *node = info->history;
+	list_tbl *node = info->history;
 	int i = 0;
 
 	while (node)
