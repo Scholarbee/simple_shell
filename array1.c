@@ -11,7 +11,7 @@ list_tbl *arr_add_node(list_tbl **head_ptr, const char *str, int nb)
 	if (!new_head)
 		return (NULL);
 	aa_memset((void *)new_head, 0, sizeof(list_tbl));
-	new_head->n = nb;
+	new_head->num = nb;
 	if (str)
 	{
 		new_head->p_str = ut_strdup(str);
