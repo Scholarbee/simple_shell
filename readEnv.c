@@ -24,7 +24,7 @@ int _unset_env(arg_info *info, char *var)
 
 	while (node)
 	{
-		p = ut_starts_with(node->str, var);
+		p = ut_starts_with(node->p_str, var);
 		if (p && *p == '=')
 		{
 			info->env_changed = arr_delete_node_at_index(&(info->env), i);
@@ -57,11 +57,11 @@ int _set_env(arg_info *info, char *var, char *val)
 	node = info->env;
 	while (node)
 	{
-		ptr = ut_starts_with(node->str, var);
+		ptr = ut_starts_with(node->p_str, var);
 		if (ptr && *ptr == '=')
 		{
-			free(node->str);
-			node->str = buffer;
+			free(node->p_str);
+			node->p_str = buffer;
 			info->env_changed = 1;
 			return (0);
 		}

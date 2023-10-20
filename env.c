@@ -10,7 +10,7 @@ int env_my_env(arg_info *ptr_info)
 
 char *env_my_get_env(arg_info *ptr_info, const char *n)
 {
-	list_t *ptr_node = ptr_info->env;
+	list_tbl *ptr_node = ptr_info->env;
 	char *mem;
 
 	while (ptr_node)
@@ -55,7 +55,7 @@ int env_my_unset_env(arg_info *ptr_info)
 
 int env_populate_env_list(arg_info *ptr_info)
 {
-	list_t *ptr_node = NULL;
+	list_tbl *ptr_node = NULL;
 	size_t index;
 
 	for (index = 0; environ[index]; index++)

@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-size_t arr_len(const list_t *head_ptr)
+size_t arr_len(const list_tbl *head_ptr)
 {
 	size_t index = 0;
 
@@ -14,9 +14,9 @@ size_t arr_len(const list_t *head_ptr)
 }
 
 
-char **arr_to_strings(list_t *head_ptr)
+char **arr_to_strings(list_tbl *head_ptr)
 {
-	list_t *ptr_node = head_ptr;
+	list_tbl *ptr_node = head_ptr;
 	size_t index = arr_len(head_ptr), e;
 	char **strgs;
 	char *s;
@@ -46,16 +46,16 @@ char **arr_to_strings(list_t *head_ptr)
 
 
 
-size_t print_arr(const list_t *head_ptr)
+size_t print_arr(const list_tbl *head_ptr)
 {
 	size_t index = 0;
 
 	while (head_ptr)
 	{
-		ut_puts(eh_convert_number(head_ptr->n, 10, 0));
+		ut_puts(eh_convert_number(head_ptr->num, 10, 0));
 		ut_putchar(':');
 		ut_putchar(' ');
-		ut_puts(head_ptr->str ? head_ptr->str : "(nil)");
+		ut_puts(head_ptr->p_str ? head_ptr->p_str : "(nil)");
 		ut_puts("\n");
 		head_ptr = head_ptr->next;
 		index++;
@@ -64,7 +64,7 @@ size_t print_arr(const list_t *head_ptr)
 }
 
 
-list_t *arr_node_starts_with(list_t *ptr_node, char *prefx, char chr)
+list_tbl *arr_node_starts_with(list_tbl *ptr_node, char *prefx, char chr)
 {
 	char *ptr = NULL;
 
@@ -79,7 +79,7 @@ list_t *arr_node_starts_with(list_t *ptr_node, char *prefx, char chr)
 }
 
 
-ssize_t arr_get_node_index(list_t *head_ptr, list_t *ptr_node)
+ssize_t arr_get_node_index(list_tbl *head_ptr, list_tbl *ptr_node)
 {
 	size_t index = 0;
 

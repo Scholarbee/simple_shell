@@ -57,7 +57,7 @@ void var_check_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p, size_t j, si
 int var_replace_alias(arg_info *ptr_info)
 {
 	int i;
-	list_t *node;
+	list_tbl *node;
 	char *ptr_p;
 
 	for (i = 0; i < 10; i++)
@@ -81,7 +81,7 @@ int var_replace_alias(arg_info *ptr_info)
 int var_replace_vars(arg_info *ptr_info)
 {
 	int i = 0;
-	list_t *node;
+	list_tbl *node;
 
 	for (i = 0; ptr_info->argv[i]; i++)
 	{

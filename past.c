@@ -35,7 +35,7 @@ int write_past(arg_info *info)
 		return (-1);
 	for (node = info->history; node; node = node->next)
 	{
-		eh_putsfd(node->str, fd);
+		eh_putsfd(node->p_str, fd);
 		eh_putfd('\n', fd);
 	}
 	eh_putfd(BUF_FLUSH, fd);
@@ -109,7 +109,7 @@ int renumber_past(arg_info *info)
 
 	while (node)
 	{
-		node->n = i++;
+		node->num = i++;
 		node = node->next;
 	}
 	return (info->history_number = i);

@@ -46,8 +46,8 @@ int pi_print_alias(list_tbl *node)
 
 	if (node)
 	{
-		ptr = qt_strchr(node->str, '=');
-		for (a = node->str; a <= ptr; a++)
+		ptr = qt_strchr(node->p_str, '=');
+		for (a = node->p_str; a <= ptr; a++)
 			ut_putchar(*a);
 		ut_putchar('\'');
 		ut_puts(ptr + 1);
