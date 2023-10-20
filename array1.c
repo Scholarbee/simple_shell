@@ -14,8 +14,8 @@ list_tbl *arr_add_node(list_tbl **head_ptr, const char *str, int nb)
 	new_head->n = nb;
 	if (str)
 	{
-		new_head->str = ut_strdup(str);
-		if (!new_head->str)
+		new_head->p_str = ut_strdup(str);
+		if (!new_head->p_str)
 		{
 			free(new_head);
 			return (NULL);
@@ -39,10 +39,10 @@ list_tbl *arr_add_node_end(list_tbl **head_ptr, const char *str, int nb)
 	if (!new_node)
 		return (NULL);
 	aa_memset((void *)new_node, 0, sizeof(list_tbl));
-	new_node->n = nb;
+	new_node->num = nb;
 	if (str)
 	{
-		new_node->str = ut_strdup(str);
+		new_node->p_str = ut_strdup(str);
 		if (!new_node->p_str)
 		{
 			free(new_node);

@@ -15,7 +15,7 @@ char *env_my_get_env(arg_info *ptr_info, const char *n)
 
 	while (ptr_node)
 	{
-		mem = ut_starts_with(ptr_node->str, n);
+		mem = ut_starts_with(ptr_node->p_str, n);
 		if (mem && *mem)
 			return (mem);
 		ptr_node = ptr_node->next;

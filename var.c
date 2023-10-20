@@ -66,7 +66,7 @@ int var_replace_alias(arg_info *ptr_info)
 		if (!node)
 			return (0);
 		free(ptr_info->argv[0]);
-		ptr_p = qt_strchr(node->str, '=');
+		ptr_p = qt_strchr(node->p_str, '=');
 		if (!ptr_p)
 			return (0);
 		ptr_p = ut_strdup(ptr_p + 1);
@@ -104,7 +104,7 @@ int var_replace_vars(arg_info *ptr_info)
 		if (node)
 		{
 			var_replace_string(&(ptr_info->argv[i]),
-				ut_strdup(qt_strchr(node->str, '=') + 1));
+				ut_strdup(qt_strchr(node->p_str, '=') + 1));
 			continue;
 		}
 		var_replace_string(&ptr_info->argv[i], ut_strdup(""));

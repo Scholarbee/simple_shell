@@ -28,7 +28,7 @@ char **arr_to_strings(list_tbl *head_ptr)
 		return (NULL);
 	for (index = 0; ptr_node; ptr_node = ptr_node->next, index++)
 	{
-		s = malloc(ut_strlen(ptr_node->str) + 1);
+		s = malloc(ut_strlen(ptr_node->p_str) + 1);
 		if (!s)
 		{
 			for (e = 0; e < index; e++)
@@ -37,7 +37,7 @@ char **arr_to_strings(list_tbl *head_ptr)
 			return (NULL);
 		}
 
-		s = ut_strcpy(s, ptr_node->str);
+		s = ut_strcpy(s, ptr_node->p_str);
 		strgs[index] = s;
 	}
 	strgs[index] = NULL;
@@ -70,7 +70,7 @@ list_tbl *arr_node_starts_with(list_tbl *ptr_node, char *prefx, char chr)
 
 	while (ptr_node)
 	{
-		ptr = ut_starts_with(ptr_node->str, prefx);
+		ptr = ut_starts_with(ptr_node->p_str, prefx);
 		if (ptr && ((chr == -1) || (*ptr == chr)))
 			return (ptr_node);
 		ptr_node = ptr_node->next;
