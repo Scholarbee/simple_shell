@@ -1,13 +1,6 @@
 #include "sshell.h"
 
-/**
- * arr_add_node - a function that adds a node to the head of the list
- * @head_ptr: pointer to the address  to head node
- * @str: str field of node
- * @nb: node index used by history
- *
- * Return: size of list
- */
+
 list_t *arr_add_node(list_t **head_ptr, const char *str, int nb)
 {
 	list_t *new_head;
@@ -33,14 +26,7 @@ list_t *arr_add_node(list_t **head_ptr, const char *str, int nb)
 	return (new_head);
 }
 
-/**
- * arr_add_node_end - a function that adds a node to the tail of the list
- * @head_ptr: pointer to the address of head node
- * @str: str field of node
- * @nb: node index used by history
- *
- * Return: size of list
- */
+
 list_t *arr_add_node_end(list_t **head_ptr, const char *str, int nb)
 {
 	list_t *new_node, *node;
@@ -74,12 +60,7 @@ list_t *arr_add_node_end(list_t **head_ptr, const char *str, int nb)
 	return (new_node);
 }
 
-/**
- * arr_print_list_str - a function that prints only the str element of a list_t linked list
- * @head_ptr: pointer to first node
- *
- * Return: size of list
- */
+
 size_t arr_print_list_str(const list_t *head_ptr)
 {
 	size_t i = 0;
@@ -94,13 +75,7 @@ size_t arr_print_list_str(const list_t *head_ptr)
 	return (i);
 }
 
-/**
- * arr_delete_node_at_index - a function that deletes node at given index
- * @head_ptr: address of pointer to first node
- * @index: index of node to delete
- *
- * Return: (1) on success, (0) on failure
- */
+
 int arr_delete_node_at_index(list_t **head_ptr, unsigned int index)
 {
 	list_t *node, *prev_node;
@@ -134,12 +109,7 @@ int arr_delete_node_at_index(list_t **head_ptr, unsigned int index)
 	return (0);
 }
 
-/**
- * arr_free_list - a function that frees all nodes of a list
- * @head_ptr: address of pointer to head node
- *
- * Return: Nothing
- */
+
 void arr_free_list(list_t **head_ptr)
 {
 	list_t *node, *next_node, *head;

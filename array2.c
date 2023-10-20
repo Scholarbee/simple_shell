@@ -1,11 +1,6 @@
 #include "sshell.h"
 
-/**
- * arr_len - a function that determines length of linked list
- * @head_ptr: pointer to first node
- *
- * Return: size of list
- */
+
 size_t arr_len(const list_t *head_ptr)
 {
 	size_t index = 0;
@@ -18,12 +13,7 @@ size_t arr_len(const list_t *head_ptr)
 	return (index);
 }
 
-/**
- * arr_to_strings - a function that returns an array of strings of the list->str
- * @head_ptr: pointer to first node
- *
- * Return: array of strings
- */
+
 char **arr_to_strings(list_t *head_ptr)
 {
 	list_t *ptr_node = head_ptr;
@@ -55,12 +45,7 @@ char **arr_to_strings(list_t *head_ptr)
 }
 
 
-/**
- * print_arr - a function that prints all elements of a list_t linked list
- * @head_ptr: pointer to first node
- *
- * Return: size of list
- */
+
 size_t print_arr(const list_t *head_ptr)
 {
 	size_t index = 0;
@@ -78,14 +63,7 @@ size_t print_arr(const list_t *head_ptr)
 	return (index);
 }
 
-/**
- * arr_node_starts_with - a function that returns node whose string starts with prefix
- * @ptr_node: pointer to list head
- * @prefx: string as prefix
- * @chr: the next character after prefix to match
- *
- * Return: match node or null
- */
+
 list_t *arr_node_starts_with(list_t *ptr_node, char *prefx, char chr)
 {
 	char *ptr = NULL;
@@ -100,13 +78,7 @@ list_t *arr_node_starts_with(list_t *ptr_node, char *prefx, char chr)
 	return (NULL);
 }
 
-/**
- * arr_get_node_index - a function that gets the indx of a node
- * @head_ptr: pointer to list head
- * @ptr_node: pointer to the node
- *
- * Return: index of node or -1
- */
+
 ssize_t arr_get_node_index(list_t *head_ptr, list_t *ptr_node)
 {
 	size_t index = 0;

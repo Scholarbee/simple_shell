@@ -1,12 +1,6 @@
 #include "sshell.h"
 
-/**
- * main - entry point
- * @ac: parameter as arg count
- * @av: parameter as arg vector
- *
- * Return: 0 on success, 1 on failure
- */
+
 int main(int a, char **v)
 {
 	arg_info info[] = { INFO_INIT };
@@ -27,7 +21,7 @@ int main(int a, char **v)
 			if (errno == ENOENT)
 			{
 				eh_eputs(v[0]);
-				eh_eputs(": 0: Can't open ");
+				eh_eputs(": 0: Can not open ");
 				eh_eputs(v[1]);
 				eh_eputchar('\n');
 				eh_eputchar(BUF_FLUSH);

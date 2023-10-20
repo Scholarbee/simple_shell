@@ -1,25 +1,13 @@
 #include "sshell.h"
 
-/**
- * pi_myhistory - a function that displays the history list
- *
- * @info: Structure containing possible arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
- */
+
 int pi_myhistory(arg_info *info)
 {
 	print_arr(info->history);
 	return (0);
 }
 
-/**
- * pi_unset_alias - a function that sets alias to string
- * @info: parameter struct
- * @str: the string alias
- *
- * Return: Always 0 on success, 1 on error
- */
+
 int pi_unset_alias(arg_info *info, char *str)
 {
 	char *p, c;
@@ -36,13 +24,7 @@ int pi_unset_alias(arg_info *info, char *str)
 	return (ret);
 }
 
-/**
- * pi_set_alias - a function that sets alias to string
- * @info: parameter struct
- * @str: the string alias
- *
- * Return: Always 0 on success, 1 on error
- */
+
 int pi_set_alias(arg_info *info, char *str)
 {
 	char *ptr;
@@ -57,12 +39,7 @@ int pi_set_alias(arg_info *info, char *str)
 	return (arr_add_node_end(&(info->alias), str, 0) == NULL);
 }
 
-/**
- * pi_print_alias - a function that prints an alias string
- * @node: the alias node
- *
- * Return: Always 0 on success, 1 on error
- */
+
 int pi_print_alias(list_t *node)
 {
 	char *ptr = NULL, *a = NULL;
@@ -80,12 +57,7 @@ int pi_print_alias(list_t *node)
 	return (1);
 }
 
-/**
- * pi_myalias - a function that emitate the alias builtin (man alias)
- * @info: Structure containing possible arguments.
- *
- *  Return: Always 0
- */
+
 int pi_myalias(arg_info *info)
 {
 	int i = 0;

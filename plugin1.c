@@ -1,17 +1,11 @@
 #include "sshell.h"
 
-/**
- * pi_myexit - a function that exits the shell
- * @info: Structure containing potential arguments.
- *
- *  Return: exits with a given exit status
- *         (0) if info.argv[0] != "exit"
- */
+
 int pi_myexit(arg_info *info)
 {
 	int exit_check;
 
-	if (info->argv[1])  /* If there is an exit arguement */
+	if (info->argv[1])  
 	{
 		exit_check = eh_erratoi(info->argv[1]);
 		if (exit_check == -1)
@@ -29,12 +23,7 @@ int pi_myexit(arg_info *info)
 	return (-2);
 }
 
-/**
- * pi_mycd - a function that changes the current directory of the process
- * @info: Structure containing possible arguments.
- *
- *  Return: Always 0
- */
+
 int pi_mycd(arg_info *info)
 {
 	char *s, *dir, buffer[1024];
@@ -47,7 +36,7 @@ int pi_mycd(arg_info *info)
 	{
 		dir = env_my_get_env(info, "HOME=");
 		if (!dir)
-			chdir_return = /* TODO: what should this be? */
+			chdir_return = 
 				chdir((dir = env_my_get_env(info, "PWD=")) ? dir : "/");
 		else
 			chdir_return = chdir(dir);
@@ -61,7 +50,7 @@ int pi_mycd(arg_info *info)
 			return (1);
 		}
 		ut_puts(env_my_get_env(info, "OLDPWD=")), ut_putchar('\n');
-		chdir_return = /* TODO: what should this be? */
+		chdir_return = 
 			chdir((dir = env_my_get_env(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
@@ -79,12 +68,7 @@ int pi_mycd(arg_info *info)
 	return (0);
 }
 
-/**
- * pi_myhelp - a function that changes the current directory of the process
- * @info: Structure containing possible arguments.
- *
- *  Return: Always 0
- */
+
 int pi_myhelp(arg_info *info)
 {
 	char **arg_array;
@@ -92,6 +76,6 @@ int pi_myhelp(arg_info *info)
 	arg_array = info->argv;
 	ut_puts("help call works. Function not yet implemented \n");
 	if (0)
-		ut_puts(*arg_array); /* temp att_unused workaround */
+		ut_puts(*arg_array);
 	return (0);
 }

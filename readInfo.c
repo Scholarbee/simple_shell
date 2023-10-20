@@ -1,9 +1,6 @@
 #include "sshell.h"
 
-/**
- * cInfo - a function that initializes info_t struct
- * @info: struct address
- */
+
 void cInfo(arg_info *info)
 {
 	info->arg = NULL;
@@ -12,11 +9,7 @@ void cInfo(arg_info *info)
 	info->argc = 0;
 }
 
-/**
- * sInfo - a function that initializes info_t struct
- * @info: struct address
- * @av: argument vector
- */
+
 void sInfo(arg_info *info, char **av)
 {
 	int i = 0;
@@ -44,13 +37,7 @@ void sInfo(arg_info *info, char **av)
 	}
 }
 
-/**
- * fInfo - a function that frees info_t struct fields
- * @info: struct address
- * @all: true if free-ing all fields
- *
- * Return: Nothing
- */
+
 void fInfo(arg_info *info, int all)
 {
 	aa_ffree(info->argv);

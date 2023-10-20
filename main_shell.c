@@ -1,12 +1,6 @@
 #include "sshell.h"
 
-/**
- * ss_hsh - main shell function
- * @info: the parameter & return info struct
- * @av: the argument vector from main()
- *
- * Return: 0 on success, 1 on error, or error code
- */
+
 int ss_hsh(arg_info *info, char **av)
 {
 	ssize_t r = 0;
@@ -43,27 +37,19 @@ int ss_hsh(arg_info *info, char **av)
 	return (builtin_ret);
 }
 
-/**
- * ss_find_builtin - a function that finds a builtin command
- * @info: the parameter & return info struct
- *
- * Return: -1 if builtin not found,
- *			0 if builtin executed successfully,
- *			1 if builtin found but not successful,
- *			-2 if builtin signals exit()
- */
+
 int ss_find_builtin(arg_info *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", pi_myexit},
-		{"env", env_my_env},
 		{"help", pi_myhelp},
+		{"env", env_my_env},
 		{"history", pi_myhistory},
+		{"alias", pi_myalias},
 		{"setenv", env_my_set_env},
 		{"unsetenv", env_my_unset_env},
 		{"cd", pi_mycd},
-		{"alias", pi_myalias},
+		{"exit", pi_myexit},
 		{NULL, NULL}
 	};
 
@@ -77,12 +63,7 @@ int ss_find_builtin(arg_info *info)
 	return (built_in_ret);
 }
 
-/**
- * ss_find_cmd - a function that finds a command in PATH
- * @info: the parameter & return info struct
- *
- * Return: void
- */
+
 void ss_find_cmd(arg_info *info)
 {
 	char *path = NULL;
@@ -119,12 +100,7 @@ void ss_find_cmd(arg_info *info)
 	}
 }
 
-/**
- * ss_fork_cmd - a function that forks an exec thread to run cmd
- * @info: the parameter & return info struct
- *
- * Return: void
- */
+
 void ss_fork_cmd(arg_info *info)
 {
 	pid_t child_pid;
@@ -132,7 +108,7 @@ void ss_fork_cmd(arg_info *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
+		
 		perror("Error:");
 		return;
 	}
@@ -145,7 +121,7 @@ void ss_fork_cmd(arg_info *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
+		
 	}
 	else
 	{

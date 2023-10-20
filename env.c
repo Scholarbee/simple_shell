@@ -1,23 +1,13 @@
 #include "sshell.h"
 
-/**
- * env_my_env - a function that prints the current environment
- * @info: Structure containing potential arguments
- * Return: Always 0
- */
+
 int env_my_env(arg_info *ptr_info)
 {
 	arr_print_list_str(ptr_info->env);
 	return (0);
 }
 
-/**
- * env_my_get_env - a function that gets the value of an environment variable
- * @ptr_info: Structure containing potential arguments.
- * @name: env var name
- *
- * Return: the value
- */
+
 char *env_my_get_env(arg_info *ptr_info, const char *n)
 {
 	list_t *ptr_node = ptr_info->env;
@@ -33,13 +23,7 @@ char *env_my_get_env(arg_info *ptr_info, const char *n)
 	return (NULL);
 }
 
-/**
- * env_my_set_env - a function that set a new environment variable,
- *             or change an existing one
- * @ptr_info: Structure containing possible arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
- */
+
 int env_my_set_env(arg_info *ptr_info)
 {
 	if (ptr_info->argc != 3)
@@ -52,12 +36,7 @@ int env_my_set_env(arg_info *ptr_info)
 	return (1);
 }
 
-/**
- * env_my_unset_env - Remove an environment variable
- * @info: Structure containing possible arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
- */
+
 int env_my_unset_env(arg_info *ptr_info)
 {
 	int index;
@@ -73,12 +52,7 @@ int env_my_unset_env(arg_info *ptr_info)
 	return (0);
 }
 
-/**
- * env_populate_env_list - a function that populates env linked list
- * @ptr_info: Structure containing possible arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
- */
+
 int env_populate_env_list(arg_info *ptr_info)
 {
 	list_t *ptr_node = NULL;

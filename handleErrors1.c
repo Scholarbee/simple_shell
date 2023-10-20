@@ -1,11 +1,6 @@
 #include "sshell.h"
 
-/**
- *eh_eputs - a function that prints an input string
- * @s: the string to be printed
- *
- * Return: Nothing
- */
+
 void eh_eputs(char *s)
 {
 	int index = 0;
@@ -19,13 +14,7 @@ void eh_eputs(char *s)
 	}
 }
 
-/**
- * eh_eputchar - a function that writes the character c to stderr
- * @chr: The character to writes
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set.
- */
+
 int eh_eputchar(char chr)
 {
 	static int index;
@@ -41,14 +30,7 @@ int eh_eputchar(char chr)
 	return (1);
 }
 
-/**
- * eh_putfd - a function that writes the character c to given file descriptor
- * @chr: The character to write
- * @fdsc: The filedescriptor to write to
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set.
- */
+
 int eh_putfd(char chr, int fdsc)
 {
 	static int index;
@@ -64,13 +46,7 @@ int eh_putfd(char chr, int fdsc)
 	return (1);
 }
 
-/**
- *eh_putsfd - a function that prints an input string
- * @s: the string to be written
- * @fdsc: the file descriptor to write to
- *
- * Return: the number of chars put
- */
+
 int eh_putsfd(char *s, int fdsc)
 {
 	int index = 0;

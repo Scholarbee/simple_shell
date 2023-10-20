@@ -1,12 +1,6 @@
 #include "sshell.h"
 
-/**
- * ut_strcpy - a function that copies a string
- * @dst: the destination
- * @sc: the source
- *
- * Return: pointer to destination
- */
+
 char *ut_strcpy(char *dst, char *sc)
 {
 	int index = 0;
@@ -22,12 +16,7 @@ char *ut_strcpy(char *dst, char *sc)
 	return (dst);
 }
 
-/**
- * ut_strdup - a function that duplicates a string
- * @s: the string to duplicate
- *
- * Return: pointer to the duplicated string
- */
+
 char *ut_strdup(const char *s)
 {
 	int len = 0;
@@ -45,12 +34,7 @@ char *ut_strdup(const char *s)
 	return (rt);
 }
 
-/**
- *ut_puts - a function that prints an input string
- *@s: the string to be printed
- *
- * Return: Nothing
- */
+
 void ut_puts(char *s)
 {
 	int index = 0;
@@ -64,13 +48,7 @@ void ut_puts(char *s)
 	}
 }
 
-/**
- * ut_putchar - a function that writes the character c to stdout
- * @chr: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
+
 int ut_putchar(char chr)
 {
 	static int index;

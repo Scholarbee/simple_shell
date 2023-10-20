@@ -1,13 +1,6 @@
 #include "sshell.h"
 
-/**
- * var_is_chain - a function that test if current char in buffer is a chain delimeter
- * @ptr_info: the parameter struct
- * @bfer: the char buffer
- * @ptr_p: address of current position in buf
- *
- * Return: 1 if chain delimeter, 0 otherwise
- */
+
 int var_is_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p)
 {
 	size_t e = *ptr_p;
@@ -24,9 +17,9 @@ int var_is_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p)
 		e++;
 		ptr_info->commandBufferType = CMD_AND;
 	}
-	else if (bfer[e] == ';') /* found end of this command */
+	else if (bfer[e] == ';')
 	{
-		bfer[e] = 0; /* replace semicolon with null */
+		bfer[e] = 0;
 		ptr_info->commandBufferType = CMD_CHAIN;
 	}
 	else
@@ -35,16 +28,7 @@ int var_is_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p)
 	return (1);
 }
 
-/**
- * var_check_chain - a function that checks if we should continue chaining based on last status
- * @ptr_info: the parameter struct
- * @bfer: the char buffer
- * @ptr_p: address of current position in buf
- * @j: starting position in buf
- * @l: length of buf
- *
- * Return: Void
- */
+
 void var_check_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p, size_t j, size_t l)
 {
 	size_t i = *ptr_p;
@@ -69,12 +53,7 @@ void var_check_chain(arg_info *ptr_info, char *bfer, size_t *ptr_p, size_t j, si
 	*ptr_p = i;
 }
 
-/**
- * var_replace_alias - a function that replaces an aliases in the tokenized string
- * @ptr_info: the parameter struct
- *
- * Return: 1 if replaced, 0 otherwise
- */
+
 int var_replace_alias(arg_info *ptr_info)
 {
 	int i;
@@ -98,12 +77,7 @@ int var_replace_alias(arg_info *ptr_info)
 	return (1);
 }
 
-/**
- * var_replace_vars - a function that replaces vars in the tokenized string
- * @ptr_info: the parameter struct
- *
- * Return: 1 if replaced, 0 otherwise
- */
+
 int var_replace_vars(arg_info *ptr_info)
 {
 	int i = 0;
@@ -139,13 +113,7 @@ int var_replace_vars(arg_info *ptr_info)
 	return (0);
 }
 
-/**
- * var_replace_string - a function that replaces string
- * @ptr_old: address of old string
- * @ptr_new: new string
- *
- * Return: 1 if replaced, 0 otherwise
- */
+
 int var_replace_string(char **ptr_old, char *ptr_new)
 {
 	free(*ptr_old);

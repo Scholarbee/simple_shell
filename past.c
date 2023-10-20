@@ -1,11 +1,6 @@
 #include "sshell.h"
 
-/**
- * get_past_file - a function that gets the history file
- * @info: parameter struct
- *
- * Return: allocated string containg history file
- */
+
 
 char *get_past_file(arg_info *info)
 {
@@ -24,12 +19,7 @@ char *get_past_file(arg_info *info)
 	return (buf);
 }
 
-/**
- * write_past - a function that creates a file, or add to an existing file
- * @info: the parameter struct
- *
- * Return: 1 on success, else -1
- */
+
 int write_past(arg_info *info)
 {
 	ssize_t fd;
@@ -53,12 +43,7 @@ int write_past(arg_info *info)
 	return (1);
 }
 
-/**
- * read_past - a function that reads history from file
- * @info: the parameter struct
- *
- * Return: histcount on success, 0 otherwise
- */
+
 int read_past(arg_info *info)
 {
 	int i, last = 0, linecount = 0;
@@ -102,14 +87,7 @@ int read_past(arg_info *info)
 	return (info->history_number);
 }
 
-/**
- * build_past_list - a function that adds entry to a history linked list
- * @info: Structure containing potential arguments. Used to maintain
- * @buf: buffer
- * @linecount: the history linecount, history_number
- *
- * Return: Always 0
- */
+
 int build_past_list(arg_info *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
@@ -123,12 +101,7 @@ int build_past_list(arg_info *info, char *buf, int linecount)
 	return (0);
 }
 
-/**
- * renumber_past - a function that renumbers the history linked list after changes
- * @info: Structure containing potential arguments. Used to maintain
- *
- * Return: the new histcount
- */
+
 int renumber_past(arg_info *info)
 {
 	list_t *node = info->history;

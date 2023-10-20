@@ -1,11 +1,6 @@
 #include "sshell.h"
 
-/**
- * eh_erratoi - a function that converts a string to an integer
- * @str: the string to be converted
- * Return: 0 if no numbers in string, converted number otherwise
- *       -1 on error
- */
+
 int eh_erratoi(char *str)
 {
 	int index = 0;
@@ -28,13 +23,7 @@ int eh_erratoi(char *str)
 	return (r);
 }
 
-/**
- * eh_print_error - a function that prints an error message
- * @ptr_info: the parameter & return info struct
- * @s: string containing specified error type
- * Return: 0 if no numbers in string, converted number otherwise
- *        -1 on error
- */
+
 void eh_print_error(arg_info *ptr_info, char *s)
 {
 	eh_eputs(ptr_info->fname);
@@ -46,13 +35,7 @@ void eh_print_error(arg_info *ptr_info, char *s)
 	eh_eputs(s);
 }
 
-/**
- * eh_print_d - function prints a decimal (integer) number (base 10)
- * @inpt: the input
- * @fdsc: the filedescriptor to write to
- *
- * Return: number of characters printed
- */
+
 int eh_print_d(int inpt, int fdsc)
 {
 	int (*__putchar)(char) = ut_putchar;
@@ -85,14 +68,7 @@ int eh_print_d(int inpt, int fdsc)
 	return (c);
 }
 
-/**
- * eh_convert_number - converter function, a clone of itoa
- * @nb: number
- * @base: base
- * @flgs: argument flags
- *
- * Return: string
- */
+
 char *eh_convert_number(long int nb, int b, int flgs)
 {
 	static char *arr;
@@ -121,12 +97,7 @@ char *eh_convert_number(long int nb, int b, int flgs)
 	return (ptr);
 }
 
-/**
- * eh_remove_comments - function replaces first chance of '#' with '\0'
- * @bfer: address of the string to change
- *
- * Return: Always 0;
- */
+
 void eh_remove_comments(char *bfer)
 {
 	int index;
