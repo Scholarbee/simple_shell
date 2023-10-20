@@ -1,16 +1,16 @@
 #include "sshell.h"
 
 
-list_t *arr_add_node(list_t **head_ptr, const char *str, int nb)
+list_tbl *arr_add_node(list_tbl **head_ptr, const char *str, int nb)
 {
-	list_t *new_head;
+	list_tbl *new_head;
 
 	if (!head_ptr)
 		return (NULL);
-	new_head = malloc(sizeof(list_t));
+	new_head = malloc(sizeof(list_tbl));
 	if (!new_head)
 		return (NULL);
-	aa_memset((void *)new_head, 0, sizeof(list_t));
+	aa_memset((void *)new_head, 0, sizeof(list_tbl));
 	new_head->n = nb;
 	if (str)
 	{
@@ -27,23 +27,23 @@ list_t *arr_add_node(list_t **head_ptr, const char *str, int nb)
 }
 
 
-list_t *arr_add_node_end(list_t **head_ptr, const char *str, int nb)
+list_tbl *arr_add_node_end(list_tbl **head_ptr, const char *str, int nb)
 {
-	list_t *new_node, *node;
+	list_tbl *new_node, *node;
 
 	if (!head_ptr)
 		return (NULL);
 
 	node = *head_ptr;
-	new_node = malloc(sizeof(list_t));
+	new_node = malloc(sizeof(list_tbl));
 	if (!new_node)
 		return (NULL);
-	aa_memset((void *)new_node, 0, sizeof(list_t));
+	aa_memset((void *)new_node, 0, sizeof(list_tbl));
 	new_node->n = nb;
 	if (str)
 	{
 		new_node->str = ut_strdup(str);
-		if (!new_node->str)
+		if (!new_node->p_str)
 		{
 			free(new_node);
 			return (NULL);
@@ -61,13 +61,13 @@ list_t *arr_add_node_end(list_t **head_ptr, const char *str, int nb)
 }
 
 
-size_t arr_print_list_str(const list_t *head_ptr)
+size_t arr_print_list_str(const list_tbl *head_ptr)
 {
 	size_t i = 0;
 
 	while (head_ptr)
 	{
-		ut_puts(head_ptr->str ? head_ptr->str : "(nil)");
+		ut_puts(head_ptr->p_str ? head_ptr->p_str : "(nil)");
 		ut_puts("\n");
 		head_ptr = head_ptr->next;
 		i++;
@@ -76,9 +76,9 @@ size_t arr_print_list_str(const list_t *head_ptr)
 }
 
 
-int arr_delete_node_at_index(list_t **head_ptr, unsigned int index)
+int arr_delete_node_at_index(list_tbl **head_ptr, unsigned int index)
 {
-	list_t *node, *prev_node;
+	list_tbl *node, *prev_node;
 	unsigned int i = 0;
 
 	if (!head_ptr || !*head_ptr)
@@ -88,7 +88,7 @@ int arr_delete_node_at_index(list_t **head_ptr, unsigned int index)
 	{
 		node = *head_ptr;
 		*head_ptr = (*head_ptr)->next;
-		free(node->str);
+		free(node->p_str);
 		free(node);
 		return (1);
 	}
@@ -98,7 +98,7 @@ int arr_delete_node_at_index(list_t **head_ptr, unsigned int index)
 		if (i == index)
 		{
 			prev_node->next = node->next;
-			free(node->str);
+			free(node->p_str);
 			free(node);
 			return (1);
 		}
@@ -110,9 +110,9 @@ int arr_delete_node_at_index(list_t **head_ptr, unsigned int index)
 }
 
 
-void arr_free_list(list_t **head_ptr)
+void arr_free_list(list_tbl **head_ptr)
 {
-	list_t *node, *next_node, *head;
+	list_tbl *node, *next_node, *head;
 
 	if (!head_ptr || !*head_ptr)
 		return;
@@ -121,7 +121,7 @@ void arr_free_list(list_t **head_ptr)
 	while (node)
 	{
 		next_node = node->next;
-		free(node->str);
+		free(node->p_str);
 		free(node);
 		node = next_node;
 	}
