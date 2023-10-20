@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-int ss_hsh(arg_info *info, char **av)
+int ss_hsh(my_arg_info *info, char **av)
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;
@@ -38,7 +38,7 @@ int ss_hsh(arg_info *info, char **av)
 }
 
 
-int ss_find_builtin(arg_info *info)
+int ss_find_builtin(my_arg_info *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
@@ -64,7 +64,7 @@ int ss_find_builtin(arg_info *info)
 }
 
 
-void ss_find_cmd(arg_info *info)
+void ss_find_cmd(my_arg_info *info)
 {
 	char *path = NULL;
 	int i, k;
@@ -101,7 +101,7 @@ void ss_find_cmd(arg_info *info)
 }
 
 
-void ss_fork_cmd(arg_info *info)
+void ss_fork_cmd(my_arg_info *info)
 {
 	pid_t child_pid;
 

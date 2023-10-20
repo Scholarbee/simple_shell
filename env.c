@@ -1,14 +1,14 @@
 #include "sshell.h"
 
 
-int env_my_env(arg_info *ptr_info)
+int env_my_env(my_arg_info *ptr_info)
 {
 	arr_print_list_str(ptr_info->env);
 	return (0);
 }
 
 
-char *env_my_get_env(arg_info *ptr_info, const char *n)
+char *env_my_get_env(my_arg_info *ptr_info, const char *n)
 {
 	list_tbl *ptr_node = ptr_info->env;
 	char *mem;
@@ -24,7 +24,7 @@ char *env_my_get_env(arg_info *ptr_info, const char *n)
 }
 
 
-int env_my_set_env(arg_info *ptr_info)
+int env_my_set_env(my_arg_info *ptr_info)
 {
 	if (ptr_info->argc != 3)
 	{
@@ -37,7 +37,7 @@ int env_my_set_env(arg_info *ptr_info)
 }
 
 
-int env_my_unset_env(arg_info *ptr_info)
+int env_my_unset_env(my_arg_info *ptr_info)
 {
 	int index;
 
@@ -53,7 +53,7 @@ int env_my_unset_env(arg_info *ptr_info)
 }
 
 
-int env_populate_env_list(arg_info *ptr_info)
+int env_populate_env_list(my_arg_info *ptr_info)
 {
 	list_tbl *ptr_node = NULL;
 	size_t index;

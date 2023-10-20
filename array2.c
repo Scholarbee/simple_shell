@@ -7,7 +7,7 @@ size_t arr_len(const list_tbl *head_ptr)
 
 	while (head_ptr)
 	{
-		head_ptr = head_ptr->next;
+		head_ptr = head_ptr->nxt;
 		index++;
 	}
 	return (index);
@@ -26,7 +26,7 @@ char **arr_to_strings(list_tbl *head_ptr)
 	strgs = malloc(sizeof(char *) * (index + 1));
 	if (!strgs)
 		return (NULL);
-	for (index = 0; ptr_node; ptr_node = ptr_node->next, index++)
+	for (index = 0; ptr_node; ptr_node = ptr_node->nxt, index++)
 	{
 		s = malloc(ut_strlen(ptr_node->p_str) + 1);
 		if (!s)
@@ -57,7 +57,7 @@ size_t print_arr(const list_tbl *head_ptr)
 		ut_putchar(' ');
 		ut_puts(head_ptr->p_str ? head_ptr->p_str : "(nil)");
 		ut_puts("\n");
-		head_ptr = head_ptr->next;
+		head_ptr = head_ptr->nxt;
 		index++;
 	}
 	return (index);
@@ -73,7 +73,7 @@ list_tbl *arr_node_starts_with(list_tbl *ptr_node, char *prefx, char chr)
 		ptr = ut_starts_with(ptr_node->p_str, prefx);
 		if (ptr && ((chr == -1) || (*ptr == chr)))
 			return (ptr_node);
-		ptr_node = ptr_node->next;
+		ptr_node = ptr_node->nxt;
 	}
 	return (NULL);
 }
@@ -87,7 +87,7 @@ ssize_t arr_get_node_index(list_tbl *head_ptr, list_tbl *ptr_node)
 	{
 		if (head_ptr == ptr_node)
 			return (index);
-		head_ptr = head_ptr->next;
+		head_ptr = head_ptr->nxt;
 		index++;
 	}
 	return (-1);

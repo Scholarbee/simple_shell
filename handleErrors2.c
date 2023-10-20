@@ -24,7 +24,7 @@ int eh_erratoi(char *str)
 }
 
 
-void eh_print_error(arg_info *ptr_info, char *s)
+void eh_print_error(my_arg_info *ptr_info, char *s)
 {
 	eh_eputs(ptr_info->fname);
 	eh_eputs(": ");

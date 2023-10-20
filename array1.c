@@ -21,7 +21,7 @@ list_tbl *arr_add_node(list_tbl **head_ptr, const char *str, int nb)
 			return (NULL);
 		}
 	}
-	new_head->next = *head_ptr;
+	new_head->nxt = *head_ptr;
 	*head_ptr = new_head;
 	return (new_head);
 }
@@ -52,7 +52,7 @@ list_tbl *arr_add_node_end(list_tbl **head_ptr, const char *str, int nb)
 	if (node)
 	{
 		while (node->next)
-			node = node->next;
+			node = node->nxt;
 		node->next = new_node;
 	}
 	else
@@ -69,7 +69,7 @@ size_t arr_print_list_str(const list_tbl *head_ptr)
 	{
 		ut_puts(head_ptr->p_str ? head_ptr->p_str : "(nil)");
 		ut_puts("\n");
-		head_ptr = head_ptr->next;
+		head_ptr = head_ptr->nxt;
 		i++;
 	}
 	return (i);
@@ -87,7 +87,7 @@ int arr_delete_node_at_index(list_tbl **head_ptr, unsigned int index)
 	if (!index)
 	{
 		node = *head_ptr;
-		*head_ptr = (*head_ptr)->next;
+		*head_ptr = (*head_ptr)->nxt;
 		free(node->p_str);
 		free(node);
 		return (1);
@@ -97,14 +97,14 @@ int arr_delete_node_at_index(list_tbl **head_ptr, unsigned int index)
 	{
 		if (i == index)
 		{
-			prev_node->next = node->next;
+			prev_node->nxt = node->nxt;
 			free(node->p_str);
 			free(node);
 			return (1);
 		}
 		i++;
 		prev_node = node;
-		node = node->next;
+		node = node->nxt;
 	}
 	return (0);
 }
@@ -120,7 +120,7 @@ void arr_free_list(list_tbl **head_ptr)
 	node = head;
 	while (node)
 	{
-		next_node = node->next;
+		next_node = node->nxt;
 		free(node->p_str);
 		free(node);
 		node = next_node;

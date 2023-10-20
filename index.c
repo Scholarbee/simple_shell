@@ -3,7 +3,7 @@
 
 int main(int a, char **v)
 {
-	arg_info info[] = { INFO_INIT };
+	my_arg_info info[] = { INFO_INIT };
 	int fdsc = 2;
 
 	asm ("mov %1, %0\n\t"

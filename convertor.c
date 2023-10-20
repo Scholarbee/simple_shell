@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 
-int conv_interactive(arg_info *ptr_info)
+int conv_interactive(my_arg_info *ptr_info)
 {
 	return (isatty(STDIN_FILENO) && ptr_info->readfd <= 2);
 }
