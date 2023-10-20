@@ -41,7 +41,7 @@ int ss_hsh(my_arg_info *info, char **av)
 int ss_find_builtin(my_arg_info *info)
 {
 	int i, blt_in_ret = -1;
-	blt_in_table bltintbl[] = {
+	blt_in_tbl bltintbl[] = {
 		{"help", pi_myhelp},
 		{"env", env_my_env},
 		{"history", pi_myhistory},
