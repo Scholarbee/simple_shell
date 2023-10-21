@@ -64,7 +64,7 @@ int pi_myalias(my_arg_info *info)
 	char *ptr = NULL;
 	list_tbl *node = NULL;
 
-	if (info->argc == 1)
+	if (info->my_argc == 1)
 	{
 		node = info->alias;
 		while (node)
@@ -74,13 +74,13 @@ int pi_myalias(my_arg_info *info)
 		}
 		return (0);
 	}
-	for (i = 1; info->argv[i]; i++)
+	for (i = 1; info->my_argv[i]; i++)
 	{
-		ptr = qt_strchr(info->argv[i], '=');
+		ptr = qt_strchr(info->my_argv[i], '=');
 		if (ptr)
-			pi_set_alias(info, info->argv[i]);
+			pi_set_alias(info, info->my_argv[i]);
 		else
-			pi_print_alias(arr_node_starts_with(info->alias, info->argv[i], '='));
+			pi_print_alias(arr_node_starts_with(info->alias, info->my_argv[i], '='));
 	}
 
 	return (0);

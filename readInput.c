@@ -45,7 +45,7 @@ ssize_t gInput(my_arg_info *info)
 	static char *buf; 
 	static size_t i, j, len;
 	ssize_t r = 0;
-	char **buf_p = &(info->arg), *p;
+	char **buf_p = &(info->my_arg), *p;
 
 	ut_putchar(BUF_FLUSH);
 	r = input_buffer(info, &buf, &len);

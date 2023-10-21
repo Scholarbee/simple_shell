@@ -56,19 +56,19 @@ typedef struct my_argument_passed
 	unsigned int my_count_line;
 	int my_err_num;
 	
-	int lc_flag;
-	char *fname;
-	list_tbl *env;
-	list_tbl *history;
-	list_tbl *alias;
-	char **environ;
-	int env_changed;
-	int status;
+	int my_lc_flag;
+	char *my_fname;
+	list_tbl *my_env;
+	list_tbl *my_history;
+	list_tbl *my_alias;
+	char **my_environ;
+	int my_env_changed;
+	int my_status;
 
-	char **commandBuffer;
-	int commandBufferType;
-	int readfd;
-	int history_number;
+	char **my_commandBuffer;
+	int my_commandBufferType;
+	int my_readfd;
+	int my_history_number;
 } my_arg_info;
 
 #define INFO_INIT \

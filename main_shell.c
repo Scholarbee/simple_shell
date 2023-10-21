@@ -30,9 +30,9 @@ int ss_hsh(my_arg_info *info, char **av)
 		exit(info->status);
 	if (builtin_ret == -2)
 	{
-		if (info->err_num == -1)
+		if (info->my_err_num == -1)
 			exit(info->status);
-		exit(info->err_num);
+		exit(info->my_err_num);
 	}
 	return (builtin_ret);
 }
@@ -54,9 +54,9 @@ int ss_find_builtin(my_arg_info *info)
 	};
 
 	for (i = 0; bltintbl[i].ptype; i++)
-		if (ut_strcmp(info->argv[0], bltintbl[i].ptype) == 0)
+		if (ut_strcmp(info->my_argv[0], bltintbl[i].ptype) == 0)
 		{
-			info->count_line++;
+			info->my_count_line++;
 			blt_in_ret = bltintbl[i].my_func(info);
 			break;
 		}
@@ -69,32 +69,32 @@ void ss_find_cmd(my_arg_info *info)
 	char *path = NULL;
 	int i, k;
 
-	info->path = info->argv[0];
+	info->my_path = info->my_argv[0];
 	if (info->lc_flag == 1)
 	{
-		info->count_line++;
+		info->my_count_line++;
 		info->lc_flag = 0;
 	}
-	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!conv_is_delim(info->arg[i], " \t\n"))
+	for (i = 0, k = 0; info->my_arg[i]; i++)
+		if (!conv_is_delim(info->my_arg[i], " \t\n"))
 			k++;
 	if (!k)
 		return;
 
-	path = parse_find_path(info, env_my_get_env(info, "PATH="), info->argv[0]);
+	path = parse_find_path(info, env_my_get_env(info, "PATH="), info->my_argv[0]);
 	if (path)
 	{
-		info->path = path;
+		info->my_path = path;
 		ss_fork_cmd(info);
 	}
 	else
 	{
 		if ((conv_interactive(info) || env_my_get_env(info, "PATH=")
-			|| info->argv[0][0] == '/') && parse_is_cmd(info, info->argv[0]))
+			|| info->my_argv[0][0] == '/') && parse_is_cmd(info, info->my_argv[0]))
 			ss_fork_cmd(info);
-		else if (*(info->arg) != '\n')
+		else if (*(info->my_arg) != '\n')
 		{
-			info->status = 127;
+			info->my_status = 127;
 			eh_print_error(info, "not found\n");
 		}
 	}
@@ -114,7 +114,7 @@ void ss_fork_cmd(my_arg_info *info)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, _get_env(info)) == -1)
+		if (execve(info->my_path, info->my_argv, _get_env(info)) == -1)
 		{
 			fInfo(info, 1);
 			if (errno == EACCES)
@@ -125,11 +125,11 @@ void ss_fork_cmd(my_arg_info *info)
 	}
 	else
 	{
-		wait(&(info->status));
-		if (WIFEXITED(info->status))
+		wait(&(info->my_status));
+		if (WIFEXITED(info->my_status))
 		{
-			info->status = WEXITSTATUS(info->status);
-			if (info->status == 126)
+			info->status = WEXITSTATUS(info->my_status);
+			if (info->my_status == 126)
 				eh_print_error(info, "Permission denied\n");
 		}
 	}

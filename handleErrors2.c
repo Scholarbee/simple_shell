@@ -28,9 +28,9 @@ void eh_print_error(my_arg_info *ptr_info, char *s)
 {
 	eh_eputs(ptr_info->fname);
 	eh_eputs(": ");
-	eh_print_d(ptr_info->count_line, STDERR_FILENO);
+	eh_print_d(ptr_info->my_count_line, STDERR_FILENO);
 	eh_eputs(": ");
-	eh_eputs(ptr_info->argv[0]);
+	eh_eputs(ptr_info->my_argv[0]);
 	eh_eputs(": ");
 	eh_eputs(s);
 }

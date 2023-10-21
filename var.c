@@ -62,17 +62,17 @@ int var_replace_alias(my_arg_info *ptr_info)
 
 	for (i = 0; i < 10; i++)
 	{
-		node = arr_node_starts_with(ptr_info->alias, ptr_info->argv[0], '=');
+		node = arr_node_starts_with(ptr_info->my_alias, ptr_info->my_argv[0], '=');
 		if (!node)
 			return (0);
-		free(ptr_info->argv[0]);
+		free(ptr_info->my_argv[0]);
 		ptr_p = qt_strchr(node->p_str, '=');
 		if (!ptr_p)
 			return (0);
 		ptr_p = ut_strdup(ptr_p + 1);
 		if (!ptr_p)
 			return (0);
-		ptr_info->argv[0] = ptr_p;
+		ptr_info->my_argv[0] = ptr_p;
 	}
 	return (1);
 }
@@ -83,31 +83,31 @@ int var_replace_vars(my_arg_info *ptr_info)
 	int i = 0;
 	list_tbl *node;
 
-	for (i = 0; ptr_info->argv[i]; i++)
+	for (i = 0; ptr_info->my_argv[i]; i++)
 	{
-		if (ptr_info->argv[i][0] != '$' || !ptr_info->argv[i][1])
+		if (ptr_info->my_argv[i][0] != '$' || !ptr_info->my_argv[i][1])
 			continue;
 
-		if (!ut_strcmp(ptr_info->argv[i], "$?"))
+		if (!ut_strcmp(ptr_info->my_argv[i], "$?"))
 		{
 			var_replace_string(&(ptr_info->argv[i]),
-				ut_strdup(eh_convert_number(ptr_info->status, 10, 0)));
+				ut_strdup(eh_convert_number(ptr_info->my_status, 10, 0)));
 			continue;
 		}
-		if (!ut_strcmp(ptr_info->argv[i], "$$"))
+		if (!ut_strcmp(ptr_info->my_argv[i], "$$"))
 		{
-			var_replace_string(&(ptr_info->argv[i]),
+			var_replace_string(&(ptr_info->my_argv[i]),
 				ut_strdup(eh_convert_number(getpid(), 10, 0)));
 			continue;
 		}
-		node = arr_node_starts_with(ptr_info->env, &ptr_info->argv[i][1], '=');
+		node = arr_node_starts_with(ptr_info->my_env, &ptr_info->my_argv[i][1], '=');
 		if (node)
 		{
-			var_replace_string(&(ptr_info->argv[i]),
+			var_replace_string(&(ptr_info->my_argv[i]),
 				ut_strdup(qt_strchr(node->p_str, '=') + 1));
 			continue;
 		}
-		var_replace_string(&ptr_info->argv[i], ut_strdup(""));
+		var_replace_string(&ptr_info->my_argv[i], ut_strdup(""));
 
 	}
 	return (0);
