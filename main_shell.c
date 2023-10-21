@@ -57,7 +57,7 @@ int ss_find_builtin(my_arg_info *info)
 		if (ut_strcmp(info->argv[0], bltintbl[i].type) == 0)
 		{
 			info->count_line++;
-			blt_in_ret = bltintbl[i].func(info);
+			blt_in_ret = bltintbl[i].my_func(info);
 			break;
 		}
 	return (blt_in_ret);
