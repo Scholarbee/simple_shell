@@ -65,7 +65,7 @@ int _set_env(my_arg_info *info, char *var, char *val)
 			info->env_changed = 1;
 			return (0);
 		}
-		node = node->next;
+		node = node->nxt;
 	}
 	arr_add_node_end(&(info->env), buffer, 0);
 	free(buffer);

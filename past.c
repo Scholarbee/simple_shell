@@ -33,7 +33,7 @@ int write_past(my_arg_info *info)
 	free(filename);
 	if (fd == -1)
 		return (-1);
-	for (node = info->history; node; node = node->next)
+	for (node = info->history; node; node = node->nxt)
 	{
 		eh_putsfd(node->p_str, fd);
 		eh_putfd('\n', fd);
@@ -110,7 +110,7 @@ int renumber_past(my_arg_info *info)
 	while (node)
 	{
 		node->num = i++;
-		node = node->next;
+		node = node->nxt;
 	}
 	return (info->history_number = i);
 }

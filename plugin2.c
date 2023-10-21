@@ -70,7 +70,7 @@ int pi_myalias(my_arg_info *info)
 		while (node)
 		{
 			pi_print_alias(node);
-			node = node->next;
+			node = node->nxt;
 		}
 		return (0);
 	}
