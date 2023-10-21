@@ -53,8 +53,8 @@ int ss_find_builtin(my_arg_info *info)
 		{NULL, NULL}
 	};
 
-	for (i = 0; bltintbl[i].type; i++)
-		if (ut_strcmp(info->argv[0], bltintbl[i].type) == 0)
+	for (i = 0; bltintbl[i].ptype; i++)
+		if (ut_strcmp(info->argv[0], bltintbl[i].ptype) == 0)
 		{
 			info->count_line++;
 			blt_in_ret = bltintbl[i].my_func(info);
