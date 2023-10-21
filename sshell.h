@@ -79,7 +79,7 @@ typedef struct my_argument_passed
 typedef struct blt_in
 {
 	char *type;
-	int (*func)(my_arg_info *);
+	int (*my_func)(my_arg_info *);
 } blt_in_tbl;
 
 
