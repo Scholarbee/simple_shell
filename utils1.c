@@ -50,4 +50,3 @@ char *ut_strcat(char *dst, char *sc)
 	*dst = *sc;
 	return (rt);
 }
-
