@@ -32,7 +32,7 @@ int _unset_env(my_arg_info *info, char *var)
 			node = info->env;
 			continue;
 		}
-		node = node->next;
+		node = node->nxt;
 		i++;
 	}
 	return (info->env_changed);
