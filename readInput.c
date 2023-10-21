@@ -11,12 +11,12 @@ ssize_t input_buffer(my_arg_info *ptr_info, char **bfer, size_t *length)
 	{
 		
 		free(*bfer);
-		*buf = NULL;
+		*bfer = NULL;
 		signal(SIGINT, sHandler);
 #if USE_GETLINE
 		r = _gLine(bfer, &len_p, stdin);
 #else
-		r = _gLine(info, bfer, &len_p);
+		r = _gLine(ptr_info, bfer, &len_p);
 #endif
 		if (r > 0)
 		{
@@ -107,7 +107,7 @@ int _gLine(my_arg_info *ptr_info, char **ptr, size_t *length)
 	if (i == len)
 		i = len = 0;
 
-	r = read_buffer(ptr_info, bfer, &len);
+	r = read_buffer(ptr_info, buf, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 
