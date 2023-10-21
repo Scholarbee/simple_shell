@@ -49,12 +49,12 @@ typedef struct list_str
 
 typedef struct my_argument_passed
 {
-	char *arg;
-	char **argv;
-	char *path;
-	int argc;
-	unsigned int count_line;
-	int err_num;
+	char *my_arg;
+	char **my_argv;
+	char *my_path;
+	int my_argc;
+	unsigned int my_count_line;
+	int my_err_num;
 	
 	int lc_flag;
 	char *fname;
