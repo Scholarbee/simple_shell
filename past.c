@@ -33,7 +33,7 @@ int write_past(my_arg_info *info)
 	free(filename);
 	if (fd == -1)
 		return (-1);
-	for (node = info->history; node; node = node->nxt)
+	for (node = info->my_history; node; node = node->nxt)
 	{
 		eh_putsfd(node->p_str, fd);
 		eh_putfd('\n', fd);
@@ -80,11 +80,11 @@ int read_past(my_arg_info *info)
 	if (last != i)
 		build_past_list(info, buf + last, linecount++);
 	free(buf);
-	info->history_number = linecount;
-	while (info->history_number-- >= HIST_MAX)
-		arr_delete_node_at_index(&(info->history), 0);
+	info->my_history_number = linecount;
+	while (info->my_history_number-- >= HIST_MAX)
+		arr_delete_node_at_index(&(info->my_history), 0);
 	renumber_past(info);
-	return (info->history_number);
+	return (info->my_history_number);
 }
 
 
@@ -92,19 +92,19 @@ int build_past_list(my_arg_info *info, char *buf, int linecount)
 {
 	list_tbl *node = NULL;
 
-	if (info->history)
-		node = info->history;
+	if (info->my_history)
+		node = info->my_history;
 	arr_add_node_end(&node, buf, linecount);
 
-	if (!info->history)
-		info->history = node;
+	if (!info->my_history)
+		info->my_history = node;
 	return (0);
 }
 
 
 int renumber_past(my_arg_info *info)
 {
-	list_tbl *node = info->history;
+	list_tbl *node = info->my_history;
 	int i = 0;
 
 	while (node)
@@ -112,5 +112,5 @@ int renumber_past(my_arg_info *info)
 		node->num = i++;
 		node = node->nxt;
 	}
-	return (info->history_number = i);
+	return (info->my_history_number = i);
 }

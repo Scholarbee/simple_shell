@@ -9,18 +9,18 @@ int var_is_chain(my_arg_info *ptr_info, char *bfer, size_t *ptr_p)
 	{
 		bfer[e] = 0;
 		e++;
-		ptr_info->commandBufferType = CMD_OR;
+		ptr_info->my_commandBufferType = CMD_OR;
 	}
 	else if (bfer[e] == '&' && bfer[e + 1] == '&')
 	{
 		bfer[e] = 0;
 		e++;
-		ptr_info->commandBufferType = CMD_AND;
+		ptr_info->my_commandBufferType = CMD_AND;
 	}
 	else if (bfer[e] == ';')
 	{
 		bfer[e] = 0;
-		ptr_info->commandBufferType = CMD_CHAIN;
+		ptr_info->my_commandBufferType = CMD_CHAIN;
 	}
 	else
 		return (0);
@@ -33,17 +33,17 @@ void var_check_chain(my_arg_info *ptr_info, char *bfer, size_t *ptr_p, size_t j,
 {
 	size_t i = *ptr_p;
 
-	if (ptr_info->commandBufferType == CMD_AND)
+	if (ptr_info->my_commandBufferType == CMD_AND)
 	{
-		if (ptr_info->status)
+		if (ptr_info->my_status)
 		{
 			bfer[j] = 0;
 			i = l;
 		}
 	}
-	if (ptr_info->commandBufferType == CMD_OR)
+	if (ptr_info->my_commandBufferType == CMD_OR)
 	{
-		if (!ptr_info->status)
+		if (!ptr_info->my_status)
 		{
 			bfer[j] = 0;
 			i = l;
@@ -90,7 +90,7 @@ int var_replace_vars(my_arg_info *ptr_info)
 
 		if (!ut_strcmp(ptr_info->my_argv[i], "$?"))
 		{
-			var_replace_string(&(ptr_info->argv[i]),
+			var_replace_string(&(ptr_info->my_argv[i]),
 				ut_strdup(eh_convert_number(ptr_info->my_status, 10, 0)));
 			continue;
 		}

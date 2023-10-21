@@ -3,7 +3,7 @@
 
 int pi_myhistory(my_arg_info *info)
 {
-	print_arr(info->history);
+	print_arr(info->my_history);
 	return (0);
 }
 
@@ -18,8 +18,8 @@ int pi_unset_alias(my_arg_info *info, char *str)
 		return (1);
 	c = *p;
 	*p = 0;
-	ret = arr_delete_node_at_index(&(info->alias),
-		arr_get_node_index(info->alias, arr_node_starts_with(info->alias, str, -1)));
+	ret = arr_delete_node_at_index(&(info->my_alias),
+		arr_get_node_index(info->my_alias, arr_node_starts_with(info->my_alias, str, -1)));
 	*p = c;
 	return (ret);
 }
@@ -36,7 +36,7 @@ int pi_set_alias(my_arg_info *info, char *str)
 		return (pi_unset_alias(info, str));
 
 	pi_unset_alias(info, str);
-	return (arr_add_node_end(&(info->alias), str, 0) == NULL);
+	return (arr_add_node_end(&(info->my_alias), str, 0) == NULL);
 }
 
 
@@ -66,7 +66,7 @@ int pi_myalias(my_arg_info *info)
 
 	if (info->my_argc == 1)
 	{
-		node = info->alias;
+		node = info->my_alias;
 		while (node)
 		{
 			pi_print_alias(node);
@@ -80,7 +80,7 @@ int pi_myalias(my_arg_info *info)
 		if (ptr)
 			pi_set_alias(info, info->my_argv[i]);
 		else
-			pi_print_alias(arr_node_starts_with(info->alias, info->my_argv[i], '='));
+			pi_print_alias(arr_node_starts_with(info->my_alias, info->my_argv[i], '='));
 	}
 
 	return (0);

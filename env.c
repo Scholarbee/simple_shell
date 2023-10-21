@@ -3,14 +3,14 @@
 
 int env_my_env(my_arg_info *ptr_info)
 {
-	arr_print_list_str(ptr_info->env);
+	arr_print_list_str(ptr_info->my_env);
 	return (0);
 }
 
 
 char *env_my_get_env(my_arg_info *ptr_info, const char *n)
 {
-	list_tbl *ptr_node = ptr_info->env;
+	list_tbl *ptr_node = ptr_info->my_env;
 	char *mem;
 
 	while (ptr_node)
@@ -60,6 +60,6 @@ int env_populate_env_list(my_arg_info *ptr_info)
 
 	for (index = 0; environ[index]; index++)
 		arr_add_node_end(&ptr_node, environ[index], 0);
-	ptr_info->env = ptr_node;
+	ptr_info->my_env = ptr_node;
 	return (0);
 }

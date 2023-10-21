@@ -3,7 +3,7 @@
 
 int conv_interactive(my_arg_info *ptr_info)
 {
-	return (isatty(STDIN_FILENO) && ptr_info->readfd <= 2);
+	return (isatty(STDIN_FILENO) && ptr_info->my_readfd <= 2);
 }
 
 

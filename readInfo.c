@@ -14,7 +14,7 @@ void sInfo(my_arg_info *info, char **av)
 {
 	int i = 0;
 
-	info->fname = av[0];
+	info->my_fname = av[0];
 	if (info->my_arg)
 	{
 		info->my_argv = par_strtow(info->my_arg, " \t");
@@ -45,7 +45,7 @@ void fInfo(my_arg_info *info, int all)
 	info->my_path = NULL;
 	if (all)
 	{
-		if (!info->commandBuffer)
+		if (!info->my_commandBuffer)
 			free(info->my_arg);
 		if (info->my_env)
 			arr_free_list(&(info->my_env));

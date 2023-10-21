@@ -29,7 +29,7 @@ int main(int a, char **v)
 			}
 			return (EXIT_FAILURE);
 		}
-		info->readfd = fdsc;
+		info->my_readfd = fdsc;
 	}
 	env_populate_env_list(info);
 	read_past(info);

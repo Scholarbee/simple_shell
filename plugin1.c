@@ -10,7 +10,7 @@ int pi_myexit(my_arg_info *info)
 		exit_check = eh_erratoi(info->my_argv[1]);
 		if (exit_check == -1)
 		{
-			info->status = 2;
+			info->my_status = 2;
 			eh_print_error(info, "Illegal number: ");
 			eh_eputs(info->my_argv[1]);
 			eh_eputchar('\n');

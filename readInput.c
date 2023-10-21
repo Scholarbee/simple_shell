@@ -26,13 +26,13 @@ ssize_t input_buffer(my_arg_info *info, char **buf, size_t *length)
 				(*buf)[r - 1] = '\0';
 				r--;
 			}
-			info->lc_flag = 1;
+			info->my_lc_flag = 1;
 			eh_remove_comments(*buf);
-			build_past_list(info, *buf, info->history_number++);
+			build_past_list(info, *buf, info->my_history_number++);
 			
 			{
 				*length = r;
-				info->commandBuffer = buf;
+				info->my_commandBuffer = buf;
 			}
 		}
 	}
@@ -68,7 +68,7 @@ ssize_t gInput(my_arg_info *info)
 		if (i >= len)
 		{
 			i = len = 0;
-			info->commandBufferType = CMD_NORM;
+			info->my_commandBufferType = CMD_NORM;
 		}
 
 		*buf_p = p;
@@ -86,7 +86,7 @@ ssize_t read_buffer(my_arg_info *info, char *buf, size_t *size)
 
 	if (*size)
 		return (0);
-	r = read(info->readfd, buf, READ_BUF_SIZE);
+	r = read(info->my_readfd, buf, READ_BUF_SIZE);
 	if (r >= 0)
 		*size = r;
 	return (r);
